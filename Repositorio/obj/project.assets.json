@@ -2866,11 +2866,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\salak401\\Desktop\\LibreriaPrueba\\Repositorio\\Repositorio.csproj",
+      "projectUniqueName": "C:\\Users\\salak401\\Downloads\\LIBRERIA-PROYECTO\\Repositorio\\Repositorio.csproj",
       "projectName": "Repositorio",
-      "projectPath": "C:\\Users\\salak401\\Desktop\\LibreriaPrueba\\Repositorio\\Repositorio.csproj",
+      "projectPath": "C:\\Users\\salak401\\Downloads\\LIBRERIA-PROYECTO\\Repositorio\\Repositorio.csproj",
       "packagesPath": "C:\\Users\\salak401\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\salak401\\Desktop\\LibreriaPrueba\\Repositorio\\obj\\",
+      "outputPath": "C:\\Users\\salak401\\Downloads\\LIBRERIA-PROYECTO\\Repositorio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2892,8 +2892,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\salak401\\Desktop\\LibreriaPrueba\\Dominio\\Dominio.csproj": {
-              "projectPath": "C:\\Users\\salak401\\Desktop\\LibreriaPrueba\\Dominio\\Dominio.csproj"
+            "C:\\Users\\salak401\\Downloads\\LIBRERIA-PROYECTO\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\salak401\\Downloads\\LIBRERIA-PROYECTO\\Dominio\\Dominio.csproj"
             }
           }
         }
