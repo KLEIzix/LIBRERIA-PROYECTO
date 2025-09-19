@@ -7,7 +7,7 @@ namespace Ut_presentacion.Aplicacion
         public static EstadosExistencias Crear()
         {
             var entidad = new EstadosExistencias();
-            entidad.Nombre = "En uso";
+            entidad.Nombre_Existencias = "En uso";
             entidad.Descripcion = "Ejemplo de estado de existencia";
 
             return entidad;

@@ -1234,6 +1234,7 @@
       "Aplicacion/1.0.0": {
         "dependencies": {
           "Dominio": "1.0.0",
+          "Microsoft.NET.Test.Sdk": "17.12.0",
           "Repositorio": "1.0.0"
         },
         "runtime": {
@@ -1248,6 +1249,7 @@
           "MSTest.TestFramework": "3.10.4",
           "Microsoft.EntityFrameworkCore": "9.0.9",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.9",
+          "Microsoft.NET.Test.Sdk": "17.12.0",
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
@@ -1260,7 +1262,8 @@
       "Repositorio/1.0.0": {
         "dependencies": {
           "Dominio": "1.0.0",
-          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.9"
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.9",
+          "Microsoft.NET.Test.Sdk": "17.12.0"
         },
         "runtime": {
           "Repositorio.dll": {

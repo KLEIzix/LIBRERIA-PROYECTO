@@ -48,7 +48,7 @@ namespace Ut_presentacion.Nucleo
             entidad.Editorial = editoriales.Id;
             entidad.Pais = paises.Id;
             entidad.Tipo = tipos.Id;
-            entidad.Isbn = "123-4567890123";
+            entidad.ISBN = "123-4567890123";
 
             return entidad;
         }

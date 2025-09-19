@@ -15,6 +15,10 @@ namespace Dominio.Entidades
         public int? Existencia { get; set; }
         public int? Estado { get; set; }
         public DateTime? Fecha_Cambio { get; set; }
+        
+        public String? Nombre_Existencias { get; set; }
+
+        public String? Descripcion { get; set; }
 
         [ForeignKey("Estado")]
         public Estados? EstadoNavigation { get; set; }

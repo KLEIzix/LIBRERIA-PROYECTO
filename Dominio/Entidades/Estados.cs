@@ -14,6 +14,8 @@ namespace Dominio.Entidades
 
         public string? Nombre_Estado { get; set; }
 
+        public string? Descripcion { get; set; }
+
         [NotMapped]
         public ICollection<EstadosExistencias>? EstadosExistencias { get; set; }
     }

@@ -1,4 +1,4 @@
-ITiposAplicacionusing Dominio.Entidades;
+using Dominio.Entidades;
 
 namespace Repositorio.Interfaces
 {
