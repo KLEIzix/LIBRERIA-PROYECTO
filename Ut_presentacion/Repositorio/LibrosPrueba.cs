@@ -10,8 +10,8 @@ namespace ut_presentacion.Repositorios
     public class LibrosPrueba
     {
         private readonly IConexion? iConexion;
-        private List<Usuarios>? lista;
-        private Usuarios? entidad;
+        private List<Libros>? lista;
+        private Libros? entidad;
 
         public LibrosPrueba()
         {
@@ -22,38 +22,66 @@ namespace ut_presentacion.Repositorios
         [TestMethod]
         public void Ejecutar()
         {
-            Assert.AreEqual(true, Guardar());
-            Assert.AreEqual(true, Modificar());
-            Assert.AreEqual(true, Listar());
-            Assert.AreEqual(true, Borrar());
-        }
-
-        public bool Listar()
-        {
-            this.lista = this.iConexion!.Usuarios!.ToList();
-            return lista.Count > 0;
+            Assert.IsTrue(Guardar());
+            Assert.IsTrue(Modificar());
+            Assert.IsTrue(Listar());
+            Assert.IsTrue(Borrar());
         }
 
         public bool Guardar()
         {
-            this.entidad = EntidadesNucleo.Usuarios()!;
-            this.iConexion!.Usuarios!.Add(this.entidad);
+            // Crear dependencias
+            var editorial = EntidadesNucleo.Editoriales()!;
+            var pais = EntidadesNucleo.Paises()!;
+            var tipo = EntidadesNucleo.Tipos()!;
+
+            this.iConexion!.Editoriales!.Add(editorial);
+            this.iConexion!.Paises!.Add(pais);
+            this.iConexion!.Tipos!.Add(tipo);
             this.iConexion!.SaveChanges();
+
+            // Crear un ISBN único para evitar errores de constraint
+            string isbnUnico = "ISBN-" + Guid.NewGuid().ToString("N").Substring(0, 13);
+
+            // Crear libro
+            this.entidad = new Libros
+            {
+                Editorial = editorial.Id,
+                Pais = pais.Id,
+                Tipo = tipo.Id,
+                Isbn = isbnUnico,
+                Titulo = "Libro de prueba",
+                Edicion = "Primera",
+                Fecha_Lanzamiento = DateOnly.FromDateTime(DateTime.Now)
+            };
+
+            this.iConexion!.Libros!.Add(this.entidad);
+            this.iConexion!.SaveChanges();
+
             return true;
         }
 
         public bool Modificar()
         {
-            this.entidad!.Nombre = "UsuarioPruebaModificado";
-            var entry = this.iConexion!.Entry<Usuarios>(this.entidad);
+            this.entidad!.Titulo = "Libro Modificado";
+            this.entidad!.Edicion = "Segunda";
+
+            var entry = this.iConexion!.Entry<Libros>(this.entidad);
             entry.State = EntityState.Modified;
             this.iConexion!.SaveChanges();
+
             return true;
+        }
+
+        public bool Listar()
+        {
+            this.lista = this.iConexion!.Libros!.ToList();
+            return lista.Count > 0;
         }
 
         public bool Borrar()
         {
-            this.iConexion!.Usuarios!.Remove(this.entidad!);
+            this.iConexion!.Libros!.Remove(this.entidad!);
             this.iConexion!.SaveChanges();
             return true;
         }

@@ -49,13 +49,13 @@ CREATE TABLE Libros (
     Fecha_Lanzamiento DATE
 );
 
-CREATE TABLE Libros_Autores (
+CREATE TABLE LibrosAutores (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Libro INT FOREIGN KEY REFERENCES Libros(Id),
     Autor INT FOREIGN KEY REFERENCES Autores(Id)
 );
 
-CREATE TABLE Libros_Temas (
+CREATE TABLE LibrosTemas (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Libro INT FOREIGN KEY REFERENCES Libros(Id),
     Tema INT FOREIGN KEY REFERENCES Temas(Id)
@@ -72,7 +72,7 @@ CREATE TABLE Estados (
     Nombre_Estado NVARCHAR(100) NOT NULL
 );
 
-CREATE TABLE Estados_Existencias (
+CREATE TABLE EstadosExistencias (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Existencia INT FOREIGN KEY REFERENCES Existencias(Id),
     Estado INT FOREIGN KEY REFERENCES Estados(Id),
@@ -90,7 +90,7 @@ CREATE TABLE Usuarios (
     Fecha_Nacimiento DATE
 );
 
-CREATE TABLE Tipos_Prestamos (
+CREATE TABLE TiposPrestamos (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Descripcion NVARCHAR(100)
 );
@@ -98,7 +98,7 @@ CREATE TABLE Tipos_Prestamos (
 CREATE TABLE Prestamos (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Usuario INT FOREIGN KEY REFERENCES Usuarios(Id),
-    Tipo_Prestamo INT FOREIGN KEY REFERENCES Tipos_Prestamos(Id),
+    Tipo_Prestamo INT FOREIGN KEY REFERENCES TiposPrestamos(Id),
     Existencia INT FOREIGN KEY REFERENCES Existencias(Id),
     Fecha_Prestamo DATE NOT NULL,
     Fecha_Devolucion DATE,
@@ -162,7 +162,7 @@ INSERT INTO Libros (Editorial, Pais, Tipo, Isbn, Titulo, Edicion, Fecha_Lanzamie
 (5, 5, 2, '9780747532743', 'Harry Potter y la Piedra Filosofal', '1ra', '1997-06-26');
 
 -- LIBROS_AUTORES
-INSERT INTO Libros_Autores (Libro, Autor) VALUES
+INSERT INTO LibrosAutores (Libro, Autor) VALUES
 (1, 1),
 (2, 2),
 (3, 3),
@@ -170,7 +170,7 @@ INSERT INTO Libros_Autores (Libro, Autor) VALUES
 (5, 5);
 
 -- LIBROS_TEMAS
-INSERT INTO Libros_Temas (Libro, Tema) VALUES
+INSERT INTO LibrosTemas (Libro, Tema) VALUES
 (1, 1),
 (2, 1),
 (3, 3),
@@ -194,7 +194,7 @@ INSERT INTO Estados (Nombre_Estado) VALUES
 ('Reservado');
 
 -- ESTADOS_EXISTENCIAS
-INSERT INTO Estados_Existencias (Existencia, Estado) VALUES
+INSERT INTO EstadosExistencias (Existencia, Estado) VALUES
 (1, 1),
 (2, 2),
 (3, 1),
@@ -210,7 +210,7 @@ INSERT INTO Usuarios (Nombre, Documento, Direccion, Telefono, Correo, Contraseña
 ('Luis Fernández', '500600700', 'Transv. 21 #14', '3047412589', 'luis.fernandez@mail.com', 'hash5', '1995-03-30');
 
 -- TIPOS_PRESTAMOS
-INSERT INTO Tipos_Prestamos (Descripcion) VALUES
+INSERT INTO TiposPrestamos (Descripcion) VALUES
 ('Consulta en sala'),
 ('Préstamo a domicilio'),
 ('Préstamo interbibliotecario'),

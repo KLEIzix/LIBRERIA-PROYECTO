@@ -10,8 +10,8 @@ namespace ut_presentacion.Repositorios
     public class PaisesPrueba
     {
         private readonly IConexion? iConexion;
-        private List<Usuarios>? lista;
-        private Usuarios? entidad;
+        private List<Paises>? lista;
+        private Paises? entidad;
 
         public PaisesPrueba()
         {
@@ -22,39 +22,39 @@ namespace ut_presentacion.Repositorios
         [TestMethod]
         public void Ejecutar()
         {
-            Assert.AreEqual(true, Guardar());
-            Assert.AreEqual(true, Modificar());
-            Assert.AreEqual(true, Listar());
-            Assert.AreEqual(true, Borrar());
-        }
-
-        public bool Listar()
-        {
-            this.lista = this.iConexion!.Usuarios!.ToList();
-            return lista.Count > 0;
+            Assert.IsTrue(Guardar());
+            Assert.IsTrue(Modificar());
+            Assert.IsTrue(Listar());
+            Assert.IsTrue(Borrar());
         }
 
         public bool Guardar()
         {
-            this.entidad = EntidadesNucleo.Usuarios()!;
-            this.iConexion!.Usuarios!.Add(this.entidad);
-            this.iConexion!.SaveChanges();
+            this.entidad = EntidadesNucleo.Paises()!;
+            iConexion!.Paises!.Add(this.entidad);
+            iConexion.SaveChanges();
             return true;
         }
 
         public bool Modificar()
         {
-            this.entidad!.Nombre = "UsuarioPruebaModificado";
-            var entry = this.iConexion!.Entry<Usuarios>(this.entidad);
+            this.entidad!.Region = "América Latina";
+            var entry = iConexion!.Entry<Paises>(this.entidad);
             entry.State = EntityState.Modified;
-            this.iConexion!.SaveChanges();
+            iConexion.SaveChanges();
             return true;
+        }
+
+        public bool Listar()
+        {
+            this.lista = iConexion!.Paises!.ToList();
+            return lista.Count > 0;
         }
 
         public bool Borrar()
         {
-            this.iConexion!.Usuarios!.Remove(this.entidad!);
-            this.iConexion!.SaveChanges();
+            iConexion!.Paises!.Remove(this.entidad!);
+            iConexion.SaveChanges();
             return true;
         }
     }

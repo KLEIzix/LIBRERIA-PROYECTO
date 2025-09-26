@@ -10,7 +10,8 @@ namespace Dominio.Entidades
 {
     public class LibrosAutores
     {
-        [Key] public int Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public int? Libro { get; set; }
         public int? Autor { get; set; }

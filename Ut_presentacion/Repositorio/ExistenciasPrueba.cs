@@ -10,8 +10,8 @@ namespace ut_presentacion.Repositorios
     public class ExistenciasPrueba
     {
         private readonly IConexion? iConexion;
-        private List<Usuarios>? lista;
-        private Usuarios? entidad;
+        private List<Existencias>? lista;
+        private Existencias? entidad;
 
         public ExistenciasPrueba()
         {
@@ -22,39 +22,57 @@ namespace ut_presentacion.Repositorios
         [TestMethod]
         public void Ejecutar()
         {
-            Assert.AreEqual(true, Guardar());
-            Assert.AreEqual(true, Modificar());
-            Assert.AreEqual(true, Listar());
-            Assert.AreEqual(true, Borrar());
-        }
-
-        public bool Listar()
-        {
-            this.lista = this.iConexion!.Usuarios!.ToList();
-            return lista.Count > 0;
+            Assert.IsTrue(Guardar());
+            Assert.IsTrue(Modificar());
+            Assert.IsTrue(Listar());
+            Assert.IsTrue(Borrar());
         }
 
         public bool Guardar()
         {
-            this.entidad = EntidadesNucleo.Usuarios()!;
-            this.iConexion!.Usuarios!.Add(this.entidad);
+            // Crear dependencias necesarias para Existencias
+            var editorial = EntidadesNucleo.Editoriales()!;
+            var pais = EntidadesNucleo.Paises()!;
+            var tipo = EntidadesNucleo.Tipos()!;
+
+            this.iConexion!.Editoriales!.Add(editorial);
+            this.iConexion!.Paises!.Add(pais);
+            this.iConexion!.Tipos!.Add(tipo);
             this.iConexion!.SaveChanges();
+
+            var libro = EntidadesNucleo.Libros(editorial, pais, tipo)!;
+            this.iConexion!.Libros!.Add(libro);
+            this.iConexion!.SaveChanges();
+
+            // Ahora sí crear la existencia
+            this.entidad = EntidadesNucleo.Existencias(libro)!;
+            this.iConexion!.Existencias!.Add(this.entidad);
+            this.iConexion!.SaveChanges();
+
             return true;
         }
 
         public bool Modificar()
         {
-            this.entidad!.Nombre = "UsuarioPruebaModificado";
-            var entry = this.iConexion!.Entry<Usuarios>(this.entidad);
+            this.entidad!.Ejemplares = 10; // modificamos cantidad
+            var entry = this.iConexion!.Entry<Existencias>(this.entidad);
             entry.State = EntityState.Modified;
             this.iConexion!.SaveChanges();
+
             return true;
+        }
+
+        public bool Listar()
+        {
+            this.lista = this.iConexion!.Existencias!.ToList();
+            return lista.Count > 0;
         }
 
         public bool Borrar()
         {
-            this.iConexion!.Usuarios!.Remove(this.entidad!);
+            this.iConexion!.Existencias!.Remove(this.entidad!);
             this.iConexion!.SaveChanges();
+
             return true;
         }
     }

@@ -10,18 +10,15 @@ namespace Dominio.Entidades
 {
     public class Libros
     {
-        [Key] public int Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public int? Editorial { get; set; }
         public int? Pais { get; set; }
         public int? Tipo { get; set; }
-        public string? ISBN { get; set; }
+        public string? Isbn { get; set; }
         public string Titulo { get; set; } = null!;
         public string? Edicion { get; set; }
-
-        public DateOnly? Publicacion { get; set; }
-
-        public int? Paginas { get; set; }
         public DateOnly? Fecha_Lanzamiento { get; set; }
 
         [ForeignKey("Editorial")]

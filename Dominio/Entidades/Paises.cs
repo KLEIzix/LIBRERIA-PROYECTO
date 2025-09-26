@@ -10,7 +10,8 @@ namespace Dominio.Entidades
 {
     public class Paises
     {
-        [Key] public int Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public string Nombre_Pais { get; set; } = null!;
         public string? Region { get; set; }

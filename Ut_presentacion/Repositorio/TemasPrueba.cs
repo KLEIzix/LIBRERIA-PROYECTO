@@ -4,16 +4,16 @@ using Repositorio.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Ut_presentacion.Nucleo;
 
-namespace ut_presentacion.Repositorios
+namespace Ut_presentacion.Repositorios
 {
     [TestClass]
-    public class TemaPrueba
+    public class TemasPrueba
     {
         private readonly IConexion? iConexion;
-        private List<Usuarios>? lista;
-        private Usuarios? entidad;
+        private List<Temas>? lista;
+        private Temas? entidad;
 
-        public TemaPrueba()
+        public TemasPrueba()
         {
             iConexion = new Conexion();
             iConexion.StringConexion = Configuracion.ObtenerValor("StringConexion");
@@ -30,22 +30,22 @@ namespace ut_presentacion.Repositorios
 
         public bool Listar()
         {
-            this.lista = this.iConexion!.Usuarios!.ToList();
+            this.lista = this.iConexion!.Temas!.ToList();
             return lista.Count > 0;
         }
 
         public bool Guardar()
         {
-            this.entidad = EntidadesNucleo.Usuarios()!;
-            this.iConexion!.Usuarios!.Add(this.entidad);
+            this.entidad = EntidadesNucleo.Temas()!;
+            this.iConexion!.Temas!.Add(this.entidad);
             this.iConexion!.SaveChanges();
             return true;
         }
 
         public bool Modificar()
         {
-            this.entidad!.Nombre = "UsuarioPruebaModificado";
-            var entry = this.iConexion!.Entry<Usuarios>(this.entidad);
+            this.entidad!.Nombre_Tema = "TemaPruebaModificado";
+            var entry = this.iConexion!.Entry<Temas>(this.entidad);
             entry.State = EntityState.Modified;
             this.iConexion!.SaveChanges();
             return true;
@@ -53,7 +53,7 @@ namespace ut_presentacion.Repositorios
 
         public bool Borrar()
         {
-            this.iConexion!.Usuarios!.Remove(this.entidad!);
+            this.iConexion!.Temas!.Remove(this.entidad!);
             this.iConexion!.SaveChanges();
             return true;
         }

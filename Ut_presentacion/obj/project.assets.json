@@ -4839,23 +4839,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Users\\salak401\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Downloads\\LIBRERIA-PROYECTO\\Ut_presentacion\\Ut_presentacion.csproj",
+      "projectUniqueName": "C:\\Users\\salak401\\Desktop\\LIBRERIA-PROYECTO\\Ut_presentacion\\Ut_presentacion.csproj",
       "projectName": "Ut_presentacion",
-      "projectPath": "C:\\Users\\User\\Downloads\\LIBRERIA-PROYECTO\\Ut_presentacion\\Ut_presentacion.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Downloads\\LIBRERIA-PROYECTO\\Ut_presentacion\\obj\\",
+      "projectPath": "C:\\Users\\salak401\\Desktop\\LIBRERIA-PROYECTO\\Ut_presentacion\\Ut_presentacion.csproj",
+      "packagesPath": "C:\\Users\\salak401\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\salak401\\Desktop\\LIBRERIA-PROYECTO\\Ut_presentacion\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\salak401\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4871,14 +4871,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\User\\Downloads\\LIBRERIA-PROYECTO\\Aplicacion\\Aplicacion.csproj": {
-              "projectPath": "C:\\Users\\User\\Downloads\\LIBRERIA-PROYECTO\\Aplicacion\\Aplicacion.csproj"
+            "C:\\Users\\salak401\\Desktop\\LIBRERIA-PROYECTO\\Aplicacion\\Aplicacion.csproj": {
+              "projectPath": "C:\\Users\\salak401\\Desktop\\LIBRERIA-PROYECTO\\Aplicacion\\Aplicacion.csproj"
             },
-            "C:\\Users\\User\\Downloads\\LIBRERIA-PROYECTO\\Dominio\\Dominio.csproj": {
-              "projectPath": "C:\\Users\\User\\Downloads\\LIBRERIA-PROYECTO\\Dominio\\Dominio.csproj"
+            "C:\\Users\\salak401\\Desktop\\LIBRERIA-PROYECTO\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\salak401\\Desktop\\LIBRERIA-PROYECTO\\Dominio\\Dominio.csproj"
             },
-            "C:\\Users\\User\\Downloads\\LIBRERIA-PROYECTO\\Repositorio\\Repositorio.csproj": {
-              "projectPath": "C:\\Users\\User\\Downloads\\LIBRERIA-PROYECTO\\Repositorio\\Repositorio.csproj"
+            "C:\\Users\\salak401\\Desktop\\LIBRERIA-PROYECTO\\Repositorio\\Repositorio.csproj": {
+              "projectPath": "C:\\Users\\salak401\\Desktop\\LIBRERIA-PROYECTO\\Repositorio\\Repositorio.csproj"
             }
           }
         }
@@ -4893,7 +4893,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -4934,7 +4934,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

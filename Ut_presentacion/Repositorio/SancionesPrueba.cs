@@ -4,14 +4,15 @@ using Repositorio.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Ut_presentacion.Nucleo;
 
-namespace ut_presentacion.Repositorios
+namespace Ut_presentacion.Repositorios
 {
     [TestClass]
     public class SancionesPrueba
     {
         private readonly IConexion? iConexion;
-        private List<Usuarios>? lista;
-        private Usuarios? entidad;
+        private List<Sanciones>? lista;
+        private Sanciones? entidad;
+        private Usuarios? usuario;
 
         public SancionesPrueba()
         {
@@ -22,39 +23,53 @@ namespace ut_presentacion.Repositorios
         [TestMethod]
         public void Ejecutar()
         {
-            Assert.AreEqual(true, Guardar());
-            Assert.AreEqual(true, Modificar());
-            Assert.AreEqual(true, Listar());
-            Assert.AreEqual(true, Borrar());
-        }
-
-        public bool Listar()
-        {
-            this.lista = this.iConexion!.Usuarios!.ToList();
-            return lista.Count > 0;
+            Assert.IsTrue(Guardar());
+            Assert.IsTrue(Modificar());
+            Assert.IsTrue(Listar());
+            Assert.IsTrue(Borrar());
         }
 
         public bool Guardar()
         {
-            this.entidad = EntidadesNucleo.Usuarios()!;
-            this.iConexion!.Usuarios!.Add(this.entidad);
-            this.iConexion!.SaveChanges();
+            // Crear usuario dependiente
+            this.usuario = EntidadesNucleo.Usuarios()!;
+            iConexion!.Usuarios!.Add(this.usuario);
+            iConexion.SaveChanges();
+
+            // Crear sanción
+            this.entidad = new Sanciones
+            {
+                Usuario = this.usuario.Id,
+                Descripcion = "Retraso en devolución",
+                Fecha_Inicio = DateOnly.FromDateTime(DateTime.Now),
+                Fecha_Fin = DateOnly.FromDateTime(DateTime.Now.AddDays(3))
+            };
+
+            iConexion.Sanciones!.Add(this.entidad);
+            iConexion.SaveChanges();
+
             return true;
         }
 
         public bool Modificar()
         {
-            this.entidad!.Nombre = "UsuarioPruebaModificado";
-            var entry = this.iConexion!.Entry<Usuarios>(this.entidad);
+            this.entidad!.Descripcion = "Multa actualizada";
+            var entry = iConexion!.Entry<Sanciones>(this.entidad);
             entry.State = EntityState.Modified;
-            this.iConexion!.SaveChanges();
+            iConexion.SaveChanges();
             return true;
+        }
+
+        public bool Listar()
+        {
+            this.lista = iConexion!.Sanciones!.ToList();
+            return lista.Count > 0;
         }
 
         public bool Borrar()
         {
-            this.iConexion!.Usuarios!.Remove(this.entidad!);
-            this.iConexion!.SaveChanges();
+            iConexion!.Sanciones!.Remove(this.entidad!);
+            iConexion.SaveChanges();
             return true;
         }
     }

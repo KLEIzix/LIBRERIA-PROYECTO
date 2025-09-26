@@ -10,7 +10,8 @@ namespace Dominio.Entidades
 {
     public class Sanciones
     {
-        [Key] public int Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public int? Usuario { get; set; }
         public string? Descripcion { get; set; }

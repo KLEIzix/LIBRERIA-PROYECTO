@@ -10,7 +10,8 @@ namespace Dominio.Entidades
 {
     public class Prestamos
     {
-        [Key] public int Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public int? Usuario { get; set; }
         public int? Tipo_Prestamo { get; set; }
@@ -23,7 +24,7 @@ namespace Dominio.Entidades
         [ForeignKey("Existencia")]
         public Existencias? ExistenciaNavigation { get; set; }
 
-        [ForeignKey("TipoPrestamo")]
+        [ForeignKey("Tipo_Prestamo")]
         public TiposPrestamos? TipoPrestamoNavigation { get; set; }
 
         [ForeignKey("Usuario")]

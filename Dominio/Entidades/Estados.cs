@@ -10,11 +10,10 @@ namespace Dominio.Entidades
 {
     public class Estados
     {
-        [Key] public int Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public string? Nombre_Estado { get; set; }
-
-        public string? Descripcion { get; set; }
 
         [NotMapped]
         public ICollection<EstadosExistencias>? EstadosExistencias { get; set; }

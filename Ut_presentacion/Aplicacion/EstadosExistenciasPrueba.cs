@@ -1,16 +1,29 @@
-using Dominio.Entidades;
+﻿using Dominio.Entidades;
+using Repositorio.Implementaciones;
+using Repositorio.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Ut_presentacion.Nucleo;
 
-namespace Ut_presentacion.Aplicacion
+namespace ut_presentacion.Aplicacion
 {
+    
+    [TestClass]
     public class EstadosExistenciasPrueba
     {
-        public static EstadosExistencias Crear()
+        private readonly IEstadosExistenciasAplicacion? iAplicacion;
+        private readonly IConexion? iConexion;
+        private List<EstadosExistencias>? lista;
+        private EstadosExistencias? entidad;
+        
+        public EstadosExistenciasPrueba()
         {
-            var entidad = new EstadosExistencias();
-            entidad.Nombre_Existencias = "En uso";
-            entidad.Descripcion = "Ejemplo de estado de existencia";
-
-            return entidad;
+            iConexion = new Conexion();
+            iConexion.StringConexion = Configuracion.ObtenerValor("StringConexion");
+            iAplicacion = new EstadosExistenciasAplicacion(iConexion);
         }
     }
 }

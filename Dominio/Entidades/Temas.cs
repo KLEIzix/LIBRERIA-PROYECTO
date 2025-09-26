@@ -10,7 +10,8 @@ namespace Dominio.Entidades
 {
     public class Temas
     {
-        [Key] public int Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public string Nombre_Tema { get; set; } = null!;
         public string? Area_Conocimiento { get; set; }

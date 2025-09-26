@@ -10,7 +10,8 @@ namespace Dominio.Entidades
 {
     public class Tipos
     {
-        [Key] public int Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public string Nombre_Tipo { get; set; } = null!;
 

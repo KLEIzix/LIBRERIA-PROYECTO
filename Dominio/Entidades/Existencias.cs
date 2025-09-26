@@ -10,14 +10,11 @@ namespace Dominio.Entidades
 {
     public class Existencias
     {
-        [Key] public int Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public int? Libro { get; set; }
         public int Ejemplares { get; set; }
-
-        public DateOnly Fecha_Ingreso { get; set; }
-
-        public string? Codigo_Barras { get; set; }
 
         [NotMapped]
         public ICollection<EstadosExistencias>? EstadosExistencia { get; set; }

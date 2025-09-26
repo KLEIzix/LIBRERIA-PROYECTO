@@ -10,7 +10,8 @@ namespace Dominio.Entidades
 {
     public class Editoriales
     {
-        [Key] public int Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public string Nombre_Editorial { get; set; } = null!;
 

@@ -1,4 +1,5 @@
 ﻿using Dominio.Entidades;
+using Microsoft.EntityFrameworkCore;
 using Repositorio.Implementaciones;
 using Repositorio.Interfaces;
 using Ut_presentacion.Nucleo;
@@ -6,14 +7,14 @@ using Ut_presentacion.Nucleo;
 namespace Ut_presentacion.Aplicacion
 {
     [TestClass]
-    public class UsuariosPrueba15
+    public class UsuariosPrueba
     {
         private readonly IUsuariosAplicacion? iAplicacion;
         private readonly IConexion? iConexion;
         private List<Usuarios>? lista;
         private Usuarios? entidad;
 
-        public UsuariosPrueba15()
+        public UsuariosPrueba()
         {
             iConexion = new Conexion();
             iConexion.StringConexion = Configuracion.ObtenerValor("StringConexion");
@@ -31,27 +32,31 @@ namespace Ut_presentacion.Aplicacion
 
         public bool Listar()
         {
-            this.lista = this.iAplicacion!.Listar();
+            this.lista = this.iConexion!.Usuarios!.ToList();
             return lista.Count > 0;
         }
 
         public bool Guardar()
         {
             this.entidad = EntidadesNucleo.Usuarios()!;
-            this.iAplicacion!.Guardar(this.entidad);
+            this.iConexion!.Usuarios!.Add(this.entidad);
+            this.iConexion!.SaveChanges();
             return true;
         }
 
         public bool Modificar()
         {
             this.entidad!.Nombre = "UsuarioPruebaModificado";
-            this.iAplicacion!.Modificar(this.entidad);
+            var entry = this.iConexion!.Entry<Usuarios>(this.entidad);
+            entry.State = EntityState.Modified;
+            this.iConexion!.SaveChanges();
             return true;
         }
 
         public bool Borrar()
         {
-            this.iAplicacion!.Borrar(this.entidad);
+            this.iConexion!.Usuarios!.Remove(this.entidad!);
+            this.iConexion!.SaveChanges();
             return true;
         }
     }

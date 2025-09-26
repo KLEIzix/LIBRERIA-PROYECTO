@@ -4,7 +4,7 @@ using Repositorio.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Ut_presentacion.Nucleo;
 
-namespace ut_presentacion.Repositorios
+namespace Ut_presentacion.Repositorios
 {
     [TestClass]
     public class UsuariosPrueba

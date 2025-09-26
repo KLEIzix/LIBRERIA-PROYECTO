@@ -10,8 +10,8 @@ namespace ut_presentacion.Repositorios
     public class EditorialesPrueba
     {
         private readonly IConexion? iConexion;
-        private List<Usuarios>? lista;
-        private Usuarios? entidad;
+        private List<Editoriales>? lista;
+        private Editoriales? entidad;
 
         public EditorialesPrueba()
         {
@@ -30,22 +30,22 @@ namespace ut_presentacion.Repositorios
 
         public bool Listar()
         {
-            this.lista = this.iConexion!.Usuarios!.ToList();
+            this.lista = this.iConexion!.Editoriales!.ToList();
             return lista.Count > 0;
         }
 
         public bool Guardar()
         {
-            this.entidad = EntidadesNucleo.Usuarios()!;
-            this.iConexion!.Usuarios!.Add(this.entidad);
+            this.entidad = EntidadesNucleo.Editoriales()!;
+            this.iConexion!.Editoriales!.Add(this.entidad);
             this.iConexion!.SaveChanges();
             return true;
         }
 
         public bool Modificar()
         {
-            this.entidad!.Nombre = "UsuarioPruebaModificado";
-            var entry = this.iConexion!.Entry<Usuarios>(this.entidad);
+            this.entidad!.Nombre_Editorial = "EditoralPruebaModificado";
+            var entry = this.iConexion!.Entry<Editoriales>(this.entidad);
             entry.State = EntityState.Modified;
             this.iConexion!.SaveChanges();
             return true;
@@ -53,7 +53,7 @@ namespace ut_presentacion.Repositorios
 
         public bool Borrar()
         {
-            this.iConexion!.Usuarios!.Remove(this.entidad!);
+            this.iConexion!.Editoriales!.Remove(this.entidad!);
             this.iConexion!.SaveChanges();
             return true;
         }

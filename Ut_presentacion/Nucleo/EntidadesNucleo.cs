@@ -48,7 +48,9 @@ namespace Ut_presentacion.Nucleo
             entidad.Editorial = editoriales.Id;
             entidad.Pais = paises.Id;
             entidad.Tipo = tipos.Id;
-            entidad.ISBN = "123-4567890123";
+
+            // Generar ISBN único en cada llamada
+            entidad.Isbn = $"ISBN-{Guid.NewGuid().ToString().Substring(0, 13)}";
 
             return entidad;
         }
@@ -62,11 +64,20 @@ namespace Ut_presentacion.Nucleo
             return entidad;
         }
 
-        public static EstadosExistencias? EstadosExistencias(Existencias existencias)
+        public static Estados? Estados()
+        {
+            var entidad = new Estados();
+            entidad.Nombre_Estado = "Estado Prueba";
+
+            return entidad;
+        }
+
+
+        public static EstadosExistencias? EstadosExistencias(Existencias existencias, Estados estados)
         {
             var entidad = new EstadosExistencias();
             entidad.Existencia = existencias.Id;
-            entidad.Estado = 1; // ejemplo
+            entidad.Estado = estados.Id;
             entidad.Fecha_Cambio = DateTime.Now;
 
             return entidad;
@@ -76,10 +87,16 @@ namespace Ut_presentacion.Nucleo
         {
             var entidad = new Usuarios();
             entidad.Nombre = "Usuario Prueba";
-            entidad.Documento = "123456";
+
+            // Documento único con Guid
+            entidad.Documento = Guid.NewGuid().ToString().Substring(0, 10);
+
             entidad.Direccion = "Calle Prueba";
             entidad.Telefono = "3001234567";
-            entidad.Correo = "usuario@prueba.com";
+
+            // Correo único con Guid
+            entidad.Correo = $"usuario_{Guid.NewGuid().ToString().Substring(0, 8)}@prueba.com";
+
             entidad.Contraseña = "123456";
             entidad.Fecha_Nacimiento = DateOnly.FromDateTime(DateTime.Now.AddYears(-25));
 
@@ -94,6 +111,7 @@ namespace Ut_presentacion.Nucleo
             entidad.Tipo_Prestamo = tiposPrestamos.Id;
             entidad.Fecha_Prestamo = DateOnly.FromDateTime(DateTime.Now);
             entidad.Fecha_Devolucion = DateOnly.FromDateTime(DateTime.Now.AddDays(7));
+            entidad.Fecha_Entrega_Real = null; // inicializamos en null hasta que se devuelva
 
             return entidad;
         }
